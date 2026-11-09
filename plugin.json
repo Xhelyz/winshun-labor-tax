@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LingCore/WinShun-plugins/main/schema/plugin.schema.json",
+  "manifest": 1,
+  "id": "xhelyz.labor-tax",
+  "author": "Xhelyz",
+  "name": {
+    "zh": "劳务报酬计算器",
+    "en": "Labour Remuneration Tax"
+  },
+  "version": "1.0.0",
+  "minWinShun": "0.7.0",
+  "homepage": "https://github.com/Xhelyz/winshun-labor-tax",
+  "description": {
+    "zh": "劳务报酬个税预扣预缴：税前算税后，税后反推税前",
+    "en": "Labour remuneration withholding tax: gross to net, net to gross"
+  },
+  "license": "MIT",
+  "runtime": {
+    "mode": "once",
+    "program": "python",
+    "script": "main.py",
+    "debounceMs": 200,
+    "timeoutMs": 3000
+  },
+  "permissions": [],
+  "commands": [
+    {
+      "id": "labor",
+      "keyword": ["劳务", "lw"],
+      "title": {
+        "zh": "劳务报酬个税",
+        "en": "Labour tax"
+      },
+      "description": {
+        "zh": "税前算税后、税后反推税前，Enter 复制数字",
+        "en": "Gross to net or net to gross; Enter copies the number"
+      },
+      "icon": "glyph:U+E8EF",
+      "hint": {
+        "zh": "8000，或 税后 6720",
+        "en": "8000, or net 6720"
+      },
+      "ai": {
+        "description": "Compute Chinese individual income tax withheld on labour remuneration (劳务报酬所得, per-payment prepayment). Input '8000' to convert gross to net, or '税后 6720' to solve gross from net. Rates follow SAT Announcement 2018 No.61 Annex Table 2: 20% up to 20,000 taxable, 30% to 50,000, 40% above, with a 800 yuan deduction for income up to 4,000 and 20% otherwise. Excludes VAT and surcharges. The first item's title holds the answer."
+      }
+    }
+  ],
+  "ai": {
+    "expose": true
+  }
+}
